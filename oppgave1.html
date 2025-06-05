@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            forEach arrays
+        </title>
+    </head>
+
+
+
+    <body>
+        <div>
+            <button onclick="buttonPress()">
+                Klikk1
+            </button>
+
+            <button onclick="buttonPress2()">
+                Klikk2
+            </button>
+
+            <button onclick="buttonPress3()">
+                Klikk3
+            </button>
+        </div>
+        
+
+        <script>
+            let arr = [];
+            let range = 10;
+            let i = 0;
+            
+
+            function resetFunc() {
+                arr = []
+            }
+
+            function generateWholeNums(x) {
+                let num = 0;
+
+                for (i = 0; i < x; i++) {
+                    num = Math.floor(Math.random() * range)
+                    arr.push(num);
+                }
+
+                console.log(arr)
+            }
+            
+            function generateDeciNums(x) {
+                let num = 0;
+
+                for (i = 0; i < x; i++) {
+                    num = (Math.random() * range).toFixed(2)
+                    arr.push(num);
+                }
+
+                console.log(arr)
+            }
+
+
+            function consoleLogItems() {
+                let i = 0;
+
+                while (i < arr.length) {
+                    console.log(arr[i])
+                    i++
+                }
+
+                resetFunc()
+            }
+
+
+
+            function buttonPress() {
+                generateWholeNums(15)
+                arr.forEach(consoleLogItems)
+            }
+
+            function buttonPress2() {
+                generateDeciNums(15)
+                arr.forEach(consoleLogItems)
+            }
+        </script>
+    </body>
+</html>

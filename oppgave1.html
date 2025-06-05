@@ -71,27 +71,27 @@
 
 
             function buttonPress() {
+                resetFunc()
                 generateWholeNums(15)
                 arr.forEach(function(num) {
                     console.log(num);
                 })
-                resetFunc()
             }
 
             function buttonPress2() {
+                resetFunc()
                 generateDeciNums(10)
                 let myArr = arr.forEach(function(num) {
                     return console.log(num);
                 })
-                resetFunc()
             }
 
             function buttonPress3() {
+                resetFunc()
                 generateCatNames(10)
-                arr.forEach(function(name) {
+                arr.map(function(name) {
                     console.log(name);
                 })
-                resetFunc()
             }
         </script>
     </body>

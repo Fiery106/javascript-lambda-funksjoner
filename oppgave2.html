@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Sortering med arrays
+        </title>
+    </head>
+
+
+
+    <body>
+        <div>
+            <button onclick="buttonPress()">
+                Klikk1
+            </button>
+
+            <button onclick="buttonPress2()">
+                Klikk2
+            </button>
+
+            <button onclick="buttonPress3()">
+                Klikk3
+            </button>
+
+            <select id="sortBy">
+                <option value="ascending">
+                    Stigende
+                </option>
+                <option value="descending">
+                    Senkende
+                </option>
+            </select>
+
+            <button onclick="sortArray()">
+                Sorter
+            </button>
+        </div>
+
+        <p id="output">øgrhghøgøjgfjø</p>
+        
+
+        <script>
+            let arr = [];
+            let range = 10;
+            
+            let cat_names = ["Garfield", "Smeagol", "Waffles", "Raspberry", "Pumpkin", "Mono", "Mini"]
+
+            let output = document.getElementById("output");
+            
+
+            function resetAll() {
+                arr = [];
+                output.innerHTML = "";
+            }
+
+            function generateWholeNums(x) {
+                let num = 0;
+
+                for (i = 0; i < x; i++) {
+                    num = Math.floor(Math.random() * range)
+                    arr.push(num);
+                }
+
+                console.log(arr)
+            }
+            
+            function generateDeciNums(x) {
+                let num = 0;
+
+                for (i = 0; i < x; i++) {
+                    num = (Math.random() * range).toFixed(2)
+                    arr.push(num);
+                }
+
+                console.log(arr)
+            }
+
+            function generateCatNames(x) {
+                let name = "";
+
+                for (i = 0; i < x; i++) {
+                    name = cat_names[Math.floor(Math.random() * cat_names.length)]
+                    arr.push(name);
+                }
+
+                console.log(arr)
+            }
+
+
+
+            function sortArray() {
+                let sortBy = document.getElementById("sortBy").value;
+
+
+                if (arr[0] > 1) {
+                    if (sortBy == "descending") {
+                        arr.sort((a, b) => b - a)
+                        console.log(arr)
+
+                    } else if (sortBy == "ascending") {
+                        arr.sort((a, b) => a - b)
+                        console.log(arr)
+
+                    } else {
+                        return console.log("Error")
+                    }
+
+                } else {
+                    if (sortBy == "descending") {
+                        arr.sort((a, b) => {
+
+                        const nameA = a.toUpperCase();
+                        const nameB = b.toUpperCase();
+                        if (nameA > nameB) {
+                            return -1;
+                        }
+                        if (nameA < nameB) {
+                            return 1;
+                        }
+
+                        return 0;
+                        });
+
+                        console.log(arr)
+
+                    } else if (sortBy == "ascending") {
+                        arr.sort((a, b) => {
+
+                        const nameA = a.toUpperCase();
+                        const nameB = b.toUpperCase();
+                        if (nameA < nameB) {
+                            return -1;
+                        }
+                        if (nameA > nameB) {
+                            return 1;
+                        }
+                        
+                        return 0;
+                        });
+
+                        console.log(arr)
+
+                    } else {
+                        return console.log("Error")
+                    }
+                }
+
+                writeOutput(arr)
+            }
+
+            function buttonPress() {
+                resetAll()
+                generateWholeNums(15)
+                arr.forEach(function(num) {
+                    console.log(num);
+                })
+                writeOutput(arr)
+            }
+
+            function buttonPress2() {
+                resetAll()
+                generateDeciNums(10)
+                let myArr = arr.forEach(function(num) {
+                    return console.log(num);
+                })
+                writeOutput(arr)
+            }
+
+            function buttonPress3() {
+                resetAll()
+                generateCatNames(10)
+                arr.map(function(name) {
+                    console.log(name);
+                })
+                writeOutput(arr)
+            }
+
+
+            function writeOutput(x) {
+                output.innerHTML = x
+            }
+        </script>
+    </body>
+</html>

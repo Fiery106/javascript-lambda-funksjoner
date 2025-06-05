@@ -27,7 +27,9 @@
         <script>
             let arr = [];
             let range = 10;
-            let i = 0;
+            
+            let cat_names = ["Garfield", "Smeagol", "Waffles", "Raspberry", "Pumpkin", "Mono", "Mini"]
+            
             
 
             function resetFunc() {
@@ -56,28 +58,40 @@
                 console.log(arr)
             }
 
+            function generateCatNames(x) {
+                let name = "";
 
-            function consoleLogItems() {
-                let i = 0;
-
-                while (i < arr.length) {
-                    console.log(arr[i])
-                    i++
+                for (i = 0; i < x; i++) {
+                    name = cat_names[Math.floor(Math.random() * cat_names.length)]
+                    arr.push(name);
                 }
 
-                resetFunc()
+                console.log(arr)
             }
-
 
 
             function buttonPress() {
                 generateWholeNums(15)
-                arr.forEach(consoleLogItems)
+                arr.forEach(function(num) {
+                    console.log(num);
+                })
+                resetFunc()
             }
 
             function buttonPress2() {
-                generateDeciNums(15)
-                arr.forEach(consoleLogItems)
+                generateDeciNums(10)
+                let myArr = arr.forEach(function(num) {
+                    return console.log(num);
+                })
+                resetFunc()
+            }
+
+            function buttonPress3() {
+                generateCatNames(10)
+                arr.forEach(function(name) {
+                    console.log(name);
+                })
+                resetFunc()
             }
         </script>
     </body>
